@@ -7,3 +7,6 @@ storiesOf('Button', module)
   .add('primary (default)', () => (
     <Button onClick={action('clicked')}>Click me</Button>
   ))
+  .add('secondary (default)', () => (
+    <Button style="secondary" onClick={action('clicked')}>Click me</Button>
+  ))

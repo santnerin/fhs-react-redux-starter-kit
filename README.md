@@ -1,3 +1,5 @@
+Homework is done by **Anna Rettenbacher** and **Tanja Santner**
+
 # FHS React/Redux Starter Kit
 
 This a starter kit for students of the University of Applied Sciences Salzburg, for the lectures:
@@ -26,7 +28,7 @@ npm run start
 ```
 npm run start # starts storybook and the react app
 npm run start:app # starts the react app
-npm run start:storybook # starts storybook
+npm run storybook # starts storybook
 
 npm run build # builds storybook and the react app
 npm run build:app # builds the react app

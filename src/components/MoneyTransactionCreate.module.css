@@ -1,0 +1,21 @@
+.wrapper{
+    display: grid;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    align-items: center;
+    grid-template-areas: "one two three";
+}
+
+.column1{
+    grid-area: one;
+}
+
+.column2{
+    grid-area: two;
+}
+
+.column3{
+    grid-area: three;
+}
