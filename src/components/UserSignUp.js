@@ -2,20 +2,26 @@ import React from 'react'
 import { Button } from './Button'
 import { TextField } from './TextField'
 import { Link } from './Link'
+import { useFormik } from 'formik'
 import styles from './Basics.module.css'
 
 export const UserSignUp = () => {
-  const submitAlert = (e) => {
-    e.preventDefault()
-    alert("Super fancy submit button that doesn't work...")
-  }
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: ''
+    },
+    onSubmit: values => {
+      console.log(values)
+    }
+  })
 
   return (
     <div className={`${styles.wrapper}`}>
-      <form onSubmit={submitAlert}>
-        <TextField label="Email" type="email"></TextField>
-        <TextField label="Password" type="password"></TextField>
-        <Button onClick={submitAlert}>Sign Up</Button>
+      <form onSubmit={formik.handleSubmit}>
+        <TextField onChange={formik.handleChange} value={formik.values.email} label="Email" type="email"></TextField>
+        <TextField onChange={formik.handleChange} value={formik.values.password} label="Password" type="password"></TextField>
+        <Button>Sign Up</Button>
         <Link link="#" name="Sign In"></Link>
       </form>
     </div>
