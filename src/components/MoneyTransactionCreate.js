@@ -2,18 +2,26 @@ import React from 'react'
 import { Dropdown } from './Dropdown'
 import { DecimalInput } from './DecimalInput'
 import { Button } from './Button'
+import { useFormik } from 'formik'
 import styles from './MoneyTransactionCreate.module.css'
 
 export const MoneyTransactionCreate = ({ users }) => {
-  const submitAlert = (e) => {
-    e.preventDefault()
-    alert("Super fancy submit button that doesn't work...")
-  }
+  const formik = useFormik({
+    initialValues: {
+      debitorid: '',
+      creditorid: '1',
+      amount: ''
+    },
+    onSubmit: values => {
+      console.log(values)
+    }
+  })
+
   return (
-    <form className={`${styles.wrapper}`} onSubmit={submitAlert}>
-      <Dropdown options={users} label='User' className={`${styles.column1}`} />
-      <DecimalInput label="Label" />
-      <Button onClick={submitAlert} style='secondary' className={`${styles.column3}`}>Create</Button>
+    <form className={`${styles.wrapper}`} onSubmit={formik.handleSubmit}>
+      <Dropdown onChange={formik.handleChange} debitorid={formik.values.debitorid} options={users} label='debitorid' className={`${styles.column1}`} />
+      <DecimalInput onChange={formik.handleChange} amount={formik.values.amount} label="Amount" />
+      <Button style='secondary' className={`${styles.column3}`}>Create</Button>
     </form>
   )
 }

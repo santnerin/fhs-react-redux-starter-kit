@@ -19,3 +19,7 @@
 .column3{
     grid-area: three;
 }
+
+.hidden{
+    display: none;
+}
