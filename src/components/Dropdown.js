@@ -7,7 +7,7 @@ export const Dropdown = ({ label, options, onChange, debitorid }) => {
       {label}
       <select name={label.toLowerCase()} id={label.toLowerCase()} onChange={onChange} debitorid={debitorid} className={`${styles.dropdown}`}>
         {options.map((option) => (
-          <option key={option.value} value={option.value}>{option.label}</option>
+          <option key={option.id} value={option.id}>{option.name}</option>
         ))}
         )
       </select>
