@@ -4,9 +4,9 @@ import { MoneyTransactionCreate } from './MoneyTransactionCreate'
 
 const users = [
   { value: '0', label: 'Select' },
-  { value: '1', label: 'User 1' },
-  { value: '2', label: 'User 2' },
-  { value: '3', label: 'User 3' }
+  { value: '1', label: 'Sepp' },
+  { value: '2', label: 'Mike' },
+  { value: '3', label: 'Fabian' }
 ]
 
 storiesOf('MoneyTransactionCreate', module).add('default', () => <MoneyTransactionCreate users={users} />)
