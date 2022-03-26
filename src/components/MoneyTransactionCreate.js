@@ -5,21 +5,21 @@ import { Button } from './Button'
 import { useFormik } from 'formik'
 import styles from './MoneyTransactionCreate.module.css'
 
-export const MoneyTransactionCreate = ({ users }) => {
+export const MoneyTransactionCreate = ({ users, onSubmit }) => {
   const formik = useFormik({
     initialValues: {
       debitorid: '',
-      creditorid: '1',
-      amount: ''
+      creditorId: 1,
+      amount: 0
     },
     onSubmit: values => {
-      console.log(values)
+      onSubmit(values.debitorid, values.creditorId, values.amount)
     }
   })
 
   return (
     <form className={`${styles.wrapper}`} onSubmit={formik.handleSubmit}>
-      <Dropdown onChange={formik.handleChange} debitorid={formik.values.debitorid} options={users} label='DebitorId' className={`${styles.column1}`} />
+      <Dropdown onChange={formik.handleChange} value={formik.values.debitorid} options={users} label='DebitorId' className={`${styles.column1}`} />
       <DecimalInput onChange={formik.handleChange} amount={formik.values.amount} label="Amount" />
       <Button style='secondary' className={`${styles.column3}`}>Create</Button>
     </form>
