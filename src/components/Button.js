@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './Button.module.css'
 
-export const Button = ({ children, type = 'submit', style = 'primary' }) => {
+export const Button = ({ children, type = 'submit', style = 'primary', onClick }) => {
   return (
-    <button type={type} className={`${styles.button} ${style === 'primary' ? styles.primary : styles.secondary}`}>
+    <button type={type} onClick={onClick} className={`${styles.button} ${style === 'primary' ? styles.primary : styles.secondary}`}>
       {children}
     </button>
   )
