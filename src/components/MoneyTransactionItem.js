@@ -8,7 +8,7 @@ export const MoneyTransactionItem = ({ transaction = {}, debitor = {} }) => {
   const formik = useFormik({
     initialValues: {
       id: '',
-      paidAt: null
+      paidAt: new Date().toISOString()
     },
     onSubmit: values => {
       console.log(values)

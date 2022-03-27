@@ -13,55 +13,6 @@
       "debitorId": 1,
       "amount": 11.2,
       "paidAt": "2000-01-01T00:00:00+01+00"
-    },
-    {
-      "debitorId": null,
-      "creditorId": 1,
-      "amount": 1000,
-      "paidAt": null,
-      "id": 3
-    },
-    {
-      "debitorId": 2,
-      "creditorId": 1,
-      "amount": 1111,
-      "paidAt": null,
-      "id": 4
-    },
-    {
-      "debitorId": 2,
-      "creditorId": 1,
-      "amount": 0,
-      "paidAt": null,
-      "id": 5
-    },
-    {
-      "debitorId": 0,
-      "creditorId": 1,
-      "amount": 1111,
-      "paidAt": null,
-      "id": 6
-    },
-    {
-      "debitorId": null,
-      "creditorId": 1,
-      "amount": 999,
-      "paidAt": null,
-      "id": 7
-    },
-    {
-      "debitorId": 2,
-      "creditorId": 1,
-      "amount": 999,
-      "paidAt": null,
-      "id": 8
-    },
-    {
-      "debitorId": 2,
-      "creditorId": 1,
-      "amount": 1,
-      "paidAt": null,
-      "id": 9
     }
   ],
   "user": [
