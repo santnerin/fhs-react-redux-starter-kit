@@ -8,7 +8,7 @@ import styles from './MoneyTransactionCreate.module.css'
 export const MoneyTransactionCreate = ({ users, onSubmit }) => {
   const formik = useFormik({
     initialValues: {
-      debitorid: '',
+      debitorid: 0,
       creditorId: 1,
       amount: 0
     },
