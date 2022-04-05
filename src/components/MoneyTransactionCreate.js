@@ -5,7 +5,9 @@ import { Button } from './Button'
 import { useFormik } from 'formik'
 import styles from './MoneyTransactionCreate.module.css'
 
-export const MoneyTransactionCreate = ({ users = [], onSubmit }) => {
+const DEFAULT_USERS = []
+
+export const MoneyTransactionCreate = ({ users = DEFAULT_USERS, onSubmit }) => {
   const ownID = 'ejhHpqUKifetuDBvQlRK'
 
   const formik = useFormik({
