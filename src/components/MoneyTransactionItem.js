@@ -3,20 +3,26 @@ import { Button } from './Button'
 import styles from './MoneyTransactionItem.module.css'
 import { Separator } from './Separator'
 import { useFormik } from 'formik'
+import { db } from '../firebase-config'
+import { doc, updateDoc, serverTimestamp } from 'firebase/firestore'
 
 export const MoneyTransactionItem = ({ transaction = {}, debitor = {} }) => {
   const formik = useFormik({
     initialValues: {
       id: '',
-      paidAt: new Date().toISOString()
+      paidAt: serverTimestamp()
     },
-    onSubmit: values => {
-      console.log(values)
+    onSubmit: async (values) => {
+      const transactionRef = doc(db, 'transactions', values.id)
+      console.log(transactionRef)
+      await updateDoc(transactionRef, {
+        paidAt: values.paidAt
+      })
     }
   })
 
   function setPaid () {
-    transaction.paidAt = new Date().toISOString()
+    transaction.paidAt = serverTimestamp()
   }
 
   function setValue (id) {
