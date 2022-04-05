@@ -5,7 +5,7 @@ import { Link } from './Link'
 import { useFormik } from 'formik'
 import styles from './Basics.module.css'
 
-export const UserSignUp = () => {
+export default function UserSignUp () {
   const formik = useFormik({
     initialValues: {
       email: '',

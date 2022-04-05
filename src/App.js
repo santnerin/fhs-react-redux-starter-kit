@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { UserSignIn } from './components/UserSignIn'
-import { UserSignUp } from './components/UserSignUp'
-import { MoneyTransactionPage } from './components/MoneyTransactionPage'
+
+const UserSignIn = lazy(() => import('./components/UserSignIn'))
+const UserSignUp = lazy(() => import('./components/UserSignUp'))
+const MoneyTransaction = lazy(() => import('./components/MoneyTransactionPage'))
 
 export function App () {
   return (
     <Router>
-      <Routes>
-        <Route path="/sign-in" element={<UserSignIn />} />
-        <Route path="/sign-up" element={<UserSignUp />} />
-        <Route path="/money-transactions" element={<MoneyTransactionPage />}
-        />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/sign-in" element={<UserSignIn />} />
+          <Route path="/sign-up" element={<UserSignUp/>} />
+          <Route path="/money-transactions" element={<MoneyTransaction />} />
+        </Routes>
+      </Suspense>
     </Router>
   )
 }
