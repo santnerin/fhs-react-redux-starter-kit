@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 const UserSignIn = lazy(() => import('./components/UserSignIn'))
 const UserSignUp = lazy(() => import('./components/UserSignUp'))
-const MoneyTransaction = lazy(() => import('./components/MoneyTransactionPage'))
+const MoneyTransactionPage = React.lazy(() => import('./components/MoneyTransactionPage'))
 
 export function App () {
   return (
@@ -12,7 +12,7 @@ export function App () {
         <Routes>
           <Route path="/sign-in" element={<UserSignIn />} />
           <Route path="/sign-up" element={<UserSignUp/>} />
-          <Route path="/money-transactions" element={<MoneyTransaction/>} />
+          <Route path="/money-transactions" element={<MoneyTransactionPage/>} />
         </Routes>
       </Suspense>
     </Router>
