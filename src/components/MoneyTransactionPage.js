@@ -4,7 +4,7 @@ import { MoneyTransactionList } from './MoneyTransactionList'
 import { db } from '../firebase-config.js'
 import { collection, doc, setDoc, getDocs } from 'firebase/firestore'
 
-export const MoneyTransactionPage = () => {
+export default function MoneyTransactionPage () {
   const userCollectionRef = collection(db, 'users')
   const transactionCollectionRef = collection(db, 'transactions')
   const [users, setUsers] = useState([])

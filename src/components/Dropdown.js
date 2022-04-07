@@ -1,7 +1,9 @@
 import React from 'react'
 import styles from './Dropdown.module.css'
 
-export const Dropdown = ({ label, options = [], onChange }) => {
+const DEFAULT_OPTIONS = []
+
+export const Dropdown = ({ label, options = DEFAULT_OPTIONS, onChange }) => {
   return (
     <label htmlFor={`${label.toLowerCase()}`} className={`${styles.label}`}>
       {label}
