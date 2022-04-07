@@ -1,4 +1,4 @@
-# Homework is done by **Anna Rettenbacher** and **Tanja Santner**
+Homework is done by **Anna Rettenbacher** and **Tanja Santner**
 
 # FHS React/Redux Starter Kit
 
