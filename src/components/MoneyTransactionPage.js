@@ -3,6 +3,9 @@ import { MoneyTransactionCreate } from './MoneyTransactionCreate'
 import { MoneyTransactionList } from './MoneyTransactionList'
 import { db } from '../firebase-config.js'
 import { collection, doc, setDoc, getDocs } from 'firebase/firestore'
+import { Button } from './Button'
+import { getAuth, signOut } from 'firebase/auth'
+import { useNavigate } from 'react-router-dom'
 
 export const MoneyTransactionPage = () => {
   const userCollectionRef = collection(db, 'users')
@@ -21,6 +24,12 @@ export const MoneyTransactionPage = () => {
     getTransaction()
   }
 
+  // async function handleSubmit (debitor, creditor, amount) {
+  //   const newTransaction = doc(collection(db, 'transactions'))
+  //   await setDoc(newTransaction, { creditorId: 'hi', debitorId: 'hans', amount: '20', paidAt: null })
+  //   getTransaction()
+  // }
+
   async function getUsers () {
     const data = await getDocs(userCollectionRef)
     const parsedData = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
@@ -34,8 +43,19 @@ export const MoneyTransactionPage = () => {
     setTransactions(parsedData)
   }
 
+  const navigate = useNavigate()
+
+  function logout () {
+    const auth = getAuth()
+    signOut(auth).then(() => {
+      console.log('Success...')
+      navigate('/sign-in')
+    })
+  }
+
   return (
     <>
+      <Button onClick={logout} style='secondary'>Logout</Button>
       <MoneyTransactionCreate users={users} onSubmit={handleSubmit} />
       <MoneyTransactionList transaction={transactions} users={users} />
     </>
