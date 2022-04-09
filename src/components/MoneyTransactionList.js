@@ -2,8 +2,6 @@ import React from 'react'
 import { MoneyTransactionItem } from './MoneyTransactionItem'
 
 export const MoneyTransactionList = ({ transaction = [], users = [] }) => {
-  console.log('MoneyTransactionList')
-  console.log(users)
   return (
     <div>
       {transaction.map((entry) => (

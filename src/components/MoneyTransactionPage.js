@@ -6,6 +6,7 @@ import { collection, doc, setDoc, getDocs } from 'firebase/firestore'
 import { Button } from './Button'
 import { getAuth, signOut } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
+import styles from './Button.module.css'
 
 export const MoneyTransactionPage = () => {
   const userCollectionRef = collection(db, 'users')
@@ -23,12 +24,6 @@ export const MoneyTransactionPage = () => {
     await setDoc(newTransaction, { creditorId: creditor, debitorId: debitor, amount: amount, paidAt: null })
     getTransaction()
   }
-
-  // async function handleSubmit (debitor, creditor, amount) {
-  //   const newTransaction = doc(collection(db, 'transactions'))
-  //   await setDoc(newTransaction, { creditorId: 'hi', debitorId: 'hans', amount: '20', paidAt: null })
-  //   getTransaction()
-  // }
 
   async function getUsers () {
     const data = await getDocs(userCollectionRef)
@@ -55,7 +50,7 @@ export const MoneyTransactionPage = () => {
 
   return (
     <>
-      <Button onClick={logout} style='secondary'>Logout</Button>
+      <Button onClick={logout} style='secondary' className={`${styles.logout}`}>Logout</Button>
       <MoneyTransactionCreate users={users} onSubmit={handleSubmit} />
       <MoneyTransactionList transaction={transactions} users={users} />
     </>

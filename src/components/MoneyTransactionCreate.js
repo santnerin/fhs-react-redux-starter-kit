@@ -16,13 +16,12 @@ export const MoneyTransactionCreate = ({ users = [], onSubmit }) => {
     },
     onSubmit: values => {
       onSubmit(values.debitor, values.creditorId, values.amount)
-      console.log('create ' + values.debitor)
     }
   })
 
   return (
     <form className={`${styles.wrapper}`} onSubmit={formik.handleSubmit}>
-      <Dropdown onChange={formik.handleChange} name="debitor" options={users} label='Debitor' className={`${styles.column1}`} />
+      <Dropdown onChange={formik.handleChange} options={users} label='Debitor' className={`${styles.column1}`} />
       <DecimalInput onChange={formik.handleChange} amount={formik.values.amount} label="Amount" />
       <Button style='secondary' className={`${styles.column3}`}>Create</Button>
     </form>

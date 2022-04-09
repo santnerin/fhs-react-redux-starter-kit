@@ -47,7 +47,7 @@ export const UserSignUp = () => {
         <TextField onChange={formik.handleChange} value={formik.values.email} label="Email" type="email"></TextField>
         <TextField onChange={formik.handleChange} value={formik.values.password} label="Password" type="password"></TextField>
         <Button>Sign Up</Button>
-        <Link link="#" name="Sign In"></Link>
+        <Link link="/sign-in" name="Sign In"></Link>
       </form>
     </div>
   )
