@@ -50,7 +50,9 @@ export const MoneyTransactionPage = () => {
 
   return (
     <>
-      <Button onClick={logout} style='secondary' className={`${styles.logout}`}>Logout</Button>
+      <div className={styles.logout}>
+        <Button onClick={logout} style='secondary'>Logout</Button>
+      </div>
       <MoneyTransactionCreate users={users} onSubmit={handleSubmit} />
       <MoneyTransactionList transaction={transactions} users={users} />
     </>

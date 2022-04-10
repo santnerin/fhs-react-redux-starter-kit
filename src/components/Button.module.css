@@ -45,5 +45,6 @@
 }
 
 .logout{
-    background-color: red;
+  width: 10vw;
+  padding: 2em;
 }
