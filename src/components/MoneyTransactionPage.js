@@ -8,7 +8,7 @@ import { getAuth, signOut } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import styles from './Button.module.css'
 
-export const MoneyTransactionPage = () => {
+export default function MoneyTransactionPage () {
   const userCollectionRef = collection(db, 'users')
   const transactionCollectionRef = collection(db, 'transactions')
   const [users, setUsers] = useState([])

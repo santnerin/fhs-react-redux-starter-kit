@@ -8,7 +8,7 @@ import { Navigate } from 'react-router-dom'
 import { auth } from '../firebase-config.js'
 import styles from './Basics.module.css'
 
-export const UserSignIn = ({ user }) => {
+export default function UserSignIn ({ user }) {
   const formik = useFormik({
     initialValues: {
       email: '',

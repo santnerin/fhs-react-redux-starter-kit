@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState, lazy } from 'react'
 import { BrowserRouter as Router, Route, Routes, useLocation, Navigate } from 'react-router-dom'
-import { UserSignIn } from './components/UserSignIn'
-import { UserSignUp } from './components/UserSignUp'
-import { MoneyTransactionPage } from './components/MoneyTransactionPage'
 import { auth } from './firebase-config'
+const UserSignIn = lazy(() => import('./components/UserSignIn'))
+const UserSignUp = lazy(() => import('./components/UserSignUp'))
+const MoneyTransactionPage = React.lazy(() => import('./components/MoneyTransactionPage'))
 
 export function App () {
   const [user, setUser] = useState()
@@ -23,17 +23,19 @@ export function App () {
 
   return (
     <Router>
-      <Routes>
-        <Route path="/sign-in" element={<UserSignIn user={user}/>} />
-        <Route path="/sign-up" element={<UserSignUp user={user}/>} />
-        <Route path="/money-transactions"
-          element={
-            <ProtectedRoute user={user}>
-              <MoneyTransactionPage/>
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/sign-in" element={<UserSignIn user={user}/>} />
+          <Route path="/sign-up" element={<UserSignUp user={user}/>} />
+          <Route path="/money-transactions"
+            element={
+              <ProtectedRoute user={user}>
+                <MoneyTransactionPage/>
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Suspense>
     </Router>
   )
 }

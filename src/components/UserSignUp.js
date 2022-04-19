@@ -9,7 +9,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { db, auth } from '../firebase-config.js'
 import { setDoc, doc } from 'firebase/firestore'
 
-export const UserSignUp = () => {
+export default function UserSignUp () {
   const navigate = useNavigate()
 
   const formik = useFormik({
