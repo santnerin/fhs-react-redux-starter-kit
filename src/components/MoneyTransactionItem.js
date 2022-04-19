@@ -6,7 +6,10 @@ import { useFormik } from 'formik'
 import { db } from '../firebase-config'
 import { doc, updateDoc, serverTimestamp } from 'firebase/firestore'
 
-export const MoneyTransactionItem = ({ transaction = {}, debitor = {} }) => {
+const DEFAULT_TRANSACTION = {}
+const DEFAULT_DEBITOR = {}
+
+export const MoneyTransactionItem = ({ transaction = DEFAULT_TRANSACTION, debitor = DEFAULT_DEBITOR }) => {
   const formik = useFormik({
     initialValues: {
       id: '',
