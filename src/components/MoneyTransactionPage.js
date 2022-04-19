@@ -3,6 +3,10 @@ import { MoneyTransactionCreate } from './MoneyTransactionCreate'
 import { MoneyTransactionList } from './MoneyTransactionList'
 import { db } from '../firebase-config.js'
 import { collection, doc, setDoc, getDocs } from 'firebase/firestore'
+import { Button } from './Button'
+import { getAuth, signOut } from 'firebase/auth'
+import { useNavigate } from 'react-router-dom'
+import styles from './Button.module.css'
 
 export default function MoneyTransactionPage () {
   const userCollectionRef = collection(db, 'users')
@@ -34,8 +38,21 @@ export default function MoneyTransactionPage () {
     setTransactions(parsedData)
   }
 
+  const navigate = useNavigate()
+
+  function logout () {
+    const auth = getAuth()
+    signOut(auth).then(() => {
+      console.log('Success...')
+      navigate('/sign-in')
+    })
+  }
+
   return (
     <>
+      <div className={styles.logout}>
+        <Button onClick={logout} style='secondary'>Logout</Button>
+      </div>
       <MoneyTransactionCreate users={users} onSubmit={handleSubmit} />
       <MoneyTransactionList transaction={transactions} users={users} />
     </>
